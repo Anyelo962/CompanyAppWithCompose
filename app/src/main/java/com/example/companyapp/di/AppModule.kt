@@ -3,6 +3,7 @@ package com.example.companyapp.di
 import android.app.Application
 import androidx.room.Room
 import com.example.companyapp.Db.AppDatabase
+import com.example.companyapp.repository.AddressRepository
 import com.example.companyapp.repository.ClientRepository
 import com.example.companyapp.repository.CompanyRepository
 import dagger.Module
@@ -34,13 +35,13 @@ object AppModule {
         return ClientRepository(db.clientDao)
     }
 
-//
-//    @Provides
-//    @Singleton
-//    fun provideAddressRepository(db: AppDatabase): AddressRepository{
-//        return AddressRepository(db.addressDao)
-//    }
-//
+
+    @Provides
+    @Singleton
+    fun provideAddressRepository(db: AppDatabase): AddressRepository {
+        return AddressRepository(db.addressDao)
+    }
+
 
 
 }

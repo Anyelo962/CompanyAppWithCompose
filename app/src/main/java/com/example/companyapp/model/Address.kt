@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Address(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val addressId:Int,
-    val address: String
+    val address: String,
+    val clientId:Int
 
 )

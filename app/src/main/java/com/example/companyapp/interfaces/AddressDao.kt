@@ -12,15 +12,15 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AddressDao {
 
-//
-//    @Query("SELECT * FROM address")
-//    fun getAllAddress(): Flow<List<Address>>
-//
-//    @Insert
-//    suspend fun addAddress(address: Address)
-//
-//    @Delete
-//    suspend fun removeAddress(client: Client)
+
+    @Query("SELECT * FROM address")
+    fun getAllAddress(): Flow<List<Address>>
+
+    @Insert
+    suspend fun addAddress(address: Address)
+
+    @Delete
+    suspend fun removeAddress(client: Client)
 
 
 }

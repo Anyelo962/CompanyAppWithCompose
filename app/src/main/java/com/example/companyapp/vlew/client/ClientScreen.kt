@@ -14,6 +14,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -35,6 +36,7 @@ fun ClientScreen(onNavigate: (UiEvent.Navigate) -> Unit,
 
 
     val context = LocalContext.current
+    var result = viewmodel.getLastClient.collectAsState(initial = "")
 
     Column(modifier = Modifier.padding(top = 15.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
@@ -68,7 +70,7 @@ fun ClientScreen(onNavigate: (UiEvent.Navigate) -> Unit,
 
         Spacer(modifier = Modifier.padding(top = 15.dp))
 
-        OutlinedTextField(value = "", onValueChange = {},
+        OutlinedTextField(value = viewmodel.address, onValueChange = { viewmodel.onEvent(AddClientEvent.OnAddresschange(it))},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 15.dp, end = 15.dp),
@@ -81,6 +83,7 @@ fun ClientScreen(onNavigate: (UiEvent.Navigate) -> Unit,
         OutlinedButton(onClick = {
             viewmodel.onEvent(AddClientEvent.OnSaveClientClick)
 
+           // ToastMessage(context, result.value.toString())
         },
             modifier = Modifier
                 .fillMaxWidth()
@@ -96,8 +99,8 @@ fun ClientScreen(onNavigate: (UiEvent.Navigate) -> Unit,
 }
 
 
-private fun ToastMessage (context:Context){
-    Toast.makeText(context, "Se ha agregado con exito", Toast.LENGTH_SHORT).show()
+private fun ToastMessage (context:Context, text:String){
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }
 
 @Composable

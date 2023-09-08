@@ -10,11 +10,11 @@ import com.example.companyapp.model.Client
 import com.example.companyapp.model.Company
 
 
-@Database(entities = [Company::class, Client::class], version = 2, exportSchema = false)
+@Database(entities = [Company::class, Client::class, Address::class], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract val companyDao: CompanyDao
     abstract val clientDao: ClientDao
-  //  abstract val addressDao: AddressDao
+    abstract val addressDao: AddressDao
 
 }
